@@ -39,6 +39,16 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        // inputDecorationTheme 속성이 앱 전체 내에서 텍스트필드, 텍스트폼필드에 적용되는 테마를 지정한다!
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey,
+          ),
+          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+          // 텍스트필드, 텍스트폼필드 안에 여백 설정
+        ),
       ),
       home: WelcomePage(),
     );
