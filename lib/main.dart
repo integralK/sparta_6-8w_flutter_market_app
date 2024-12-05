@@ -46,8 +46,48 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.grey,
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          // 텍스트필드, 텍스트폼필드 안에 여백 설정
+          contentPadding: EdgeInsets.symmetric(
+            vertical: 16,
+            horizontal: 20,
+          ), // 텍스트필드, 텍스트폼필드 안에 여백 설정
+          border: MaterialStateOutlineInputBorder.resolveWith((states) {
+            // 테두리 만들어 주는 것
+            // resolveWith 안에 함수를 넘겨줘야 한다. 여기 states의 역할은 텍스트 폼 필드의 상태가 바뀌었을 때마다 이 함수가 실행이 된다.
+            // 이 states 파라미터의 타입이 <WidgetState>라는 이넘의 Set이 들어올거다.(마우스 올리면 확인됨)
+
+            // print(states); // 잘 작동되고 있는지 콘솔에서 확인해보기.
+
+            // 1. states Set 안에 WidgetState.focused가 포함이 되어있을 때
+            if (states.contains(WidgetState.focused)) {
+              return OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(
+                  color: Colors.grey,
+                  width: 2,
+                ),
+              );
+            }
+            // 2. states Set 안에 WidgetState.
+            if (states.contains(WidgetState.error)) {
+              return OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(
+                  color: Colors.red[100]!,
+                  // borderSide color에는 null이 올 수 없다. 그러나 red값에서 색상레벨에 따라서 값을 가지고 올때 null일수도 있기때문에 뒤에 ! 넣어줌.
+                  width: 2,
+                ),
+              );
+            }
+            // 3. 디폴트값
+            return OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: Colors.grey[300]!,
+                // borderSide color에는 null이 올 수 없다. 그러나 red값에서 색상레벨에 따라서 값을 가지고 올때 null일수도 있기때문에 뒤에 ! 넣어줌.
+                width: 1,
+              ),
+            );
+          }),
         ),
       ),
       home: WelcomePage(),
