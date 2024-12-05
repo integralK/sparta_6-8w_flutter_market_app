@@ -91,8 +91,7 @@ class MyApp extends StatelessWidget {
           }),
         ),
       ),
-      // home: WelcomePage(),
-      home: JoinPage(),
+      home: WelcomePage(),
     );
   }
 }
