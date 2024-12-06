@@ -14,8 +14,19 @@ class HomeFloatingActionButton extends StatelessWidget {
 
         return FloatingActionButton.extended(
           onPressed: () {},
-          label: Text('상품등록'),
+          label: Text(
+            '상품등록',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           icon: Icon(Icons.add),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          backgroundColor: Theme.of(context).highlightColor,
+          foregroundColor: Colors.white,
         );
       },
     );
