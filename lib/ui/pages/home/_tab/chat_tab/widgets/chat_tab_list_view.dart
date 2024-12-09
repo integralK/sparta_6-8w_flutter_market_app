@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_market_app/ui/pages/home/_tab/chat_tab/widgets/user_profile_image.dart';
+import 'package:flutter_market_app/ui/widgets/user_profile_image.dart';
 
 class ChatTabListView extends StatelessWidget {
   @override
