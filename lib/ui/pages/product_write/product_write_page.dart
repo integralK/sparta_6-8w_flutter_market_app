@@ -23,10 +23,13 @@ class _ProductWritePageState extends State<ProductWritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView(
-        children: [
-          //
-        ],
+      body: Form(
+        key: formKey,
+        child: ListView(
+          children: [
+            //
+          ],
+        ),
       ),
     );
   }
