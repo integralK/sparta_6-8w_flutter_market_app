@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_market_app/core/snackbar_util.dart';
 import 'package:flutter_market_app/ui/widgets/user_profile_image.dart';
 
 class MyProfileBox extends StatelessWidget {
@@ -22,13 +23,28 @@ class MyProfileBox extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          child: Text(
-            '프로필 수정',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+        GestureDetector(
+          onTap: () {
+            SnackbarUtil.showSnackBar(
+              context,
+              '준비중입니다.',
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey,
+            ),
+            padding: EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 12,
+            ),
+            child: Text(
+              '프로필 수정',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
