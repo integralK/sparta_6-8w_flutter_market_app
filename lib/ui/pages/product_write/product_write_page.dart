@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_market_app/core/validator_util.dart';
+import 'package:flutter_market_app/ui/pages/product_write/widgets/product_category_box.dart';
+import 'package:flutter_market_app/ui/pages/product_write/widgets/product_write_picture_area.dart';
 
 class ProductWritePage extends StatefulWidget {
   @override
@@ -19,16 +23,61 @@ class _ProductWritePageState extends State<ProductWritePage> {
     super.dispose();
   }
 
+  void onWriteDone() {
+    formKey.currentState?.validate();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Form(
-        key: formKey,
-        child: ListView(
-          children: [
-            //
-          ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus(); // 빈공간 눌렀을때 키보드 사라지게
+      },
+      child: Scaffold(
+        appBar: AppBar(),
+        body: Form(
+          key: formKey,
+          child: ListView(
+            padding: EdgeInsets.all(20),
+            children: [
+              ProductWritePictureArea(),
+              SizedBox(height: 20),
+              ProductCategoryBox(),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: titleController,
+                decoration: InputDecoration(
+                  hintText: '상품명을 입력해주세요',
+                ),
+                validator: ValidatorUtil.validatorTitle,
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: priceController,
+                keyboardType: TextInputType.number, // 숫자 키보드로 바꿔주는거
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly, // 숫자만! 입력되게 해줌
+                ],
+                decoration: InputDecoration(
+                  hintText: '가격을 입력해주세요',
+                ),
+                validator: ValidatorUtil.validatorPrice,
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: contentController,
+                decoration: InputDecoration(
+                  hintText: '내용을 입력해주세요',
+                ),
+                validator: ValidatorUtil.validatorContent,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: onWriteDone,
+                child: Text('작성 완료'),
+              ),
+            ],
+          ),
         ),
       ),
     );

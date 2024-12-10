@@ -1,6 +1,6 @@
 // 텍스트 폼 필드에서 사용할 Validator 함수 작성
 
-class ValidatorUtils {
+class ValidatorUtil {
   static String? validatorId(String? value) {
     if (value?.trim().isEmpty ?? true) {
       return "아이디를 입력해 주세요";
@@ -34,7 +34,7 @@ class ValidatorUtils {
 
   static String? validatorTitle(String? value) {
     if (value?.trim().isEmpty ?? true) {
-      return "상품명을 입력해 주세요";
+      return " 상품명을 입력해 주세요";
     }
 
     if (value!.length < 2) {

@@ -14,7 +14,7 @@ class PwTextFormField extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(hintText: "비밀번호를 입력해주세요"),
       obscureText: true, // 비밀번호 안보이게
-      validator: ValidatorUtils.validatorPassword,
+      validator: ValidatorUtil.validatorPassword,
       controller: controller,
     );
   }

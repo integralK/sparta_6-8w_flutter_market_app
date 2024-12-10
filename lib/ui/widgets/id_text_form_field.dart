@@ -13,7 +13,7 @@ class IdTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(hintText: "아이디를 입력해주세요"),
-      validator: ValidatorUtils.validatorId,
+      validator: ValidatorUtil.validatorId,
       controller: controller,
     );
   }
