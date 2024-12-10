@@ -7,13 +7,16 @@ import 'package:flutter_market_app/ui/pages/product_detail/widgets/product_detai
 class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // print(MediaQuery.of(context).padding.bottom);
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           ProductDetailActions(),
         ],
       ),
-      bottomSheet: ProductDetailBottomSheet(),
+      bottomSheet:
+          ProductDetailBottomSheet(MediaQuery.of(context).padding.bottom),
       body: ListView(
         children: [
           ProductDetailPicture(),
